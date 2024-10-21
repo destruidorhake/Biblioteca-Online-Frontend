@@ -49,7 +49,10 @@ export class UserLoginComponent {
   onLogin(): void {
     this.submitted = true;
     if (this.loginForm.invalid) {
-      console.error("Formulário inválido");
+      Swal.fire({
+        icon: 'info',
+        html: `<b>Formulário inválido!</p>`
+      });
       return;
     }
 
@@ -57,7 +60,6 @@ export class UserLoginComponent {
 
     this.authService.login(email, password).subscribe(
       (response: any) => {
-        console.log('Resposta do login:', response);
         if (response.message === "Login bem-sucedido!") {
           // Redireciona para a rota desejada após login
           this.router.navigate(['/search']);
@@ -66,7 +68,6 @@ export class UserLoginComponent {
         }
       },
       error => {
-        console.error('Erro de autenticação', error);
         this.showError("Credenciais erradas! Favor verificar os campos!");
       }
     );
@@ -84,7 +85,10 @@ export class UserLoginComponent {
   onRegistrar(): void {
     this.submitted = true;
     if (this.registrarForm.invalid) {
-      console.error("Formulário de registro inválido");
+      Swal.fire({
+        icon: 'info',
+        html: `<b>Formulário de registro inválido!</p>`
+      });
       return;
     }
 

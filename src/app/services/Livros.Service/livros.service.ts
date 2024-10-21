@@ -17,7 +17,6 @@ export class LivrosService {
     return this.http.post<Livro>(`${this.apiUrl}/livros`, livroData)
       .pipe(
         catchError(error => {
-          console.error('Erro ao salvar livro:', error);
           return throwError(() => new Error('Erro ao salvar livro. Tente novamente mais tarde.'));
         })
       );
@@ -27,7 +26,6 @@ export class LivrosService {
     return this.http.put<Livro>(`${this.apiUrl}/livros/${id}`, livroData)
       .pipe(
         catchError(error => {
-          console.error('Erro ao atualizar livro:', error);
           return throwError(() => new Error('Erro ao atualizar livro. Tente novamente mais tarde.'));
         })
       );
@@ -37,7 +35,6 @@ export class LivrosService {
     return this.http.put<void>(`${this.apiUrl}/livros/sequencia/${id}`, novaSequencia)
     .pipe(
       catchError(error => {
-        console.error('Erro ao atualizar sequência do livro:', error);
         return throwError(() => new Error('Erro ao atualizar sequência do livro. Tente novamente mais tarde.'));
       })
     );
@@ -47,7 +44,6 @@ export class LivrosService {
     return this.http.put<void>(`${this.apiUrl}/livros/quantidade/${id}`, livroAtualizado)
       .pipe(
         catchError(error => {
-          console.error('Erro ao atualizar quantidade do livro:', error);
           return throwError(() => new Error('Erro ao atualizar quantidade do livro. Tente novamente mais tarde.'));
         })
       );
@@ -57,7 +53,6 @@ export class LivrosService {
     return this.http.get<Livro[]>(`${this.apiUrl}/livros`)
       .pipe(
         catchError(error => {
-          console.error('Erro ao buscar livros:', error);
           return throwError(() => new Error('Erro ao buscar livros. Tente novamente mais tarde.'));
         })
       );
@@ -67,7 +62,6 @@ export class LivrosService {
     return this.http.get<{ idLivro: number; sequencia: number }>(`${this.apiUrl}/livros/sequencia/${id}`)
     .pipe(
       catchError(error => {
-        console.error('Erro ao buscar sequência de livros:', error);
         return throwError(() => new Error('Erro ao buscar sequência de livros. Tente novamente mais tarde.'));
       })
     );
@@ -77,14 +71,12 @@ export class LivrosService {
     return this.http.delete<void>(`${this.apiUrl}/livros/${id}`)
       .pipe(
         catchError(error => {
-          console.error('Erro ao deletar livro:', error);
           return throwError(() => new Error('Erro ao deletar livro. Tente novamente mais tarde.'));
         })
       );
   }
 
   deleteLivroCadastrado(id: number) {
-    console.log(id);
     return this.http.delete(`${this.apiUrl}/livros/${id}`);
   }
 
@@ -92,7 +84,6 @@ export class LivrosService {
     return this.http.get<Livro[]>(`${this.apiUrl}/livros?nomeLivro=${encodeURIComponent(nomeLivro)}`)
       .pipe(
         catchError(error => {
-          console.error('Erro ao buscar livro por nome:', error);
           return throwError(() => new Error('Erro ao buscar livro por nome. Tente novamente mais tarde.'));
         })
       );
@@ -102,7 +93,6 @@ export class LivrosService {
     return this.http.get<Livro>(`${this.apiUrl}/livros/${id}`)
     .pipe(
       catchError(error => {
-        console.error('Erro ao buscar livro por ID:', error);
         return throwError(() => new Error('Erro ao buscar livro por ID. Tente novamente mais tarde.'));
       })
     );

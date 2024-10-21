@@ -49,9 +49,6 @@ export class LivrosAtibuidosAlunoComponent {
 
       return matchesAlunoNome || matchesLivroNome || matchesDataRegistro;
     });
-
-    console.log(this.filteredAlunoLivros); // Para ver o resultado filtrado no console
-
     this.currentPage = 1; // Reseta para a primeira página ao pesquisar
     this.updatePaginatedAlunoLivros(); // Atualiza a tabela com os resultados filtrados
   }
@@ -62,8 +59,15 @@ export class LivrosAtibuidosAlunoComponent {
       this.filteredAlunoLivros = data; // Inicializa com todos os livros
       this.updatePaginatedAlunoLivros(); // Atualiza os livros atribuídos paginados
     }, (error) => {
-      console.error('Erro ao carregar livros atribuídos:', error);
-      alert('Erro ao carregar livros atribuídos. Tente novamente.');
+      Swal.fire({
+        icon: "error",
+        html: `
+          <b>Erro</b>
+          <p>Erro ao carregar livros atribuídos. Tente novamente.</p>
+        `,
+        showConfirmButton: false,
+        timer: 2500
+      });
     });
   }
 
@@ -92,14 +96,13 @@ export class LivrosAtibuidosAlunoComponent {
           next: sequencia => {
             let sequenciaAtualizada = Math.max(sequencia.sequencia - 1, 1); // Garante que a sequência seja no mínimo 1
 
-            console.log("nova sequencia:"+sequenciaAtualizada)
             // Validação para a nova sequência
             if (sequenciaAtualizada < 0) {
               Swal.fire({
                 icon: 'info',
                 title: 'Erro',
                 text: 'A sequência não pode ser negativa.',
-                timer: 2000
+                timer: 2500
               });
               return;
             }
@@ -110,39 +113,36 @@ export class LivrosAtibuidosAlunoComponent {
                   icon: 'success',
                   html: `<b>Operação Concluída</b><p>Livro desatribuído com sucesso!</p>`,
                   showConfirmButton: false,
-                  timer: 2000
+                  timer: 2500
                 });
                 this.loadAlunoLivros(); // Atualiza a lista de livros
               },
               error: (error) => {
-                console.error('Erro ao atualizar sequência do livro:', error);
                 Swal.fire({
                   icon: 'error',
                   html: `<b>Operação Não Executada</b><p>Erro ao atualizar sequência do livro.</p>`,
                   showConfirmButton: false,
-                  timer: 2000
+                  timer: 2500
                 });
               }
             });
           },
           error: (error) => {
-            console.error('Erro ao obter sequência do livro:', error);
             Swal.fire({
               icon: 'warning',
               html: `<b>Operação Não Executada</b><p>Erro ao obter sequência do livro.</p>`,
               showConfirmButton: false,
-              timer: 2000
+              timer: 2500
             });
           }
         });
       },
       error: (error) => {
-        console.error('Erro ao desatribuir livro:', error);
         Swal.fire({
           icon: 'error',
           html: `<b>Operação Não Executada</b><p>Erro ao desatribuir livro.</p>`,
           showConfirmButton: false,
-          timer: 2000
+          timer: 2500
         });
       }
     });

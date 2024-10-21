@@ -35,8 +35,15 @@ export class AlunosCadastradosComponent {
       this.filteredAluno = this.alunos; // Começa sem filtro
       this.updatePaginatedAlunos();
     }, (error) => {
-      console.error('Erro ao carregar alunos:', error);
-      alert('Erro ao carregar alunos. Tente novamente.');
+      Swal.fire({
+        icon: "error",
+        html: `
+          <b>Erro</b>
+          <p>Erro ao carregar alunos. Tente novamente.</p>
+        `,
+        showConfirmButton: false,
+        timer: 2500
+      });
     });
   }
 
@@ -69,14 +76,13 @@ export class AlunosCadastradosComponent {
               `,
               icon: "success",
               showConfirmButton: false,
-              timer: 1500
+              timer: 2500
             });
             this.loadAlunos(); // Carrega novamente a lista de alunos
             this.currentPage = this.currentPage; // Redefine a página atual para 1
             this.updatePaginatedAlunos(); // Atualiza os alunos paginados
           },
           error: (error) => {
-            console.error('Erro ao deletar aluno:', error);
             let errorMessage = 'Erro ao tentar apagar o aluno. Tente novamente.';
             if (error.status === 404) {
               errorMessage = 'Aluno não encontrado.';

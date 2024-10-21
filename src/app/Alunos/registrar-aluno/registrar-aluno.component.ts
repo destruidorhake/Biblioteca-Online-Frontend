@@ -79,7 +79,7 @@ export class RegistrarAlunoComponent {
                 <p style="margin-top: 3%; color: black;">O formulário será limpo em breve...</p>
               `,
               showConfirmButton: false,
-              timer: 2000
+              timer: 2500
             });
 
             // Limpar Formulário

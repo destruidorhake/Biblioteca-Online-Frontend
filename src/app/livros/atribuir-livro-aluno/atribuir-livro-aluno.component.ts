@@ -70,7 +70,15 @@ export class AtribuirLivroAlunoComponent {
         this.alunos = data; // Preenche a lista de alunos
       },
       error: (error) => {
-        console.error('Erro ao carregar alunos:', error);
+        Swal.fire({
+          icon: "error",
+          html: `
+            <b>Erro</b>
+            <p>Erro ao carregar alunos!</p>
+          `,
+          showConfirmButton: false,
+          timer: 2500
+        });
       }
     });
   }
@@ -86,7 +94,15 @@ export class AtribuirLivroAlunoComponent {
         });
       },
       error: (error) => {
-        console.error('Erro ao carregar livros:', error);
+        Swal.fire({
+          icon: "error",
+          html: `
+            <b>Erro</b>
+            <p>Erro ao carregar livros!</p>
+          `,
+          showConfirmButton: false,
+          timer: 2500
+        });
       }
     });
   }
@@ -108,7 +124,7 @@ export class AtribuirLivroAlunoComponent {
         icon: 'info',
         html: `<b>Formulário inválido!</b><p>Por favor, preencha todos os campos obrigatórios!</p>`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 2500
       });
       return true;
     }
@@ -121,7 +137,7 @@ export class AtribuirLivroAlunoComponent {
         icon: 'warning',
         html: `<b>Data inválida!</b><p>Não é permitido selecionar uma data futura.</p>`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 2500
       });
       return true;
     }
@@ -139,7 +155,7 @@ export class AtribuirLivroAlunoComponent {
           html: `<b>Atenção!</b><p>Você não pode atribuir mais livros do que a quantidade disponível.</p>
                  <p>Altere a quantidade na pagina de: Livros Cadastrados</p>`,
           showConfirmButton: false,
-          timer: 1500
+          timer: 2500
         });
         return false;
       }
@@ -148,7 +164,7 @@ export class AtribuirLivroAlunoComponent {
         icon: 'error',
         html: `<b>Erro!</b><p>A quantidade do livro é inválida.</p>`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 2500
       });
     }
 
@@ -162,7 +178,7 @@ export class AtribuirLivroAlunoComponent {
         icon: 'info',
         html: `<b>Atenção!</b><p>A sequência atual é ${this.livroSequencia[idLivro]} de ${Livro.quantidadeLivro} disponíveis.</p>`,
         showConfirmButton: false,
-        timer: 3000
+        timer: 2500
       });
     }
   }
@@ -178,7 +194,7 @@ export class AtribuirLivroAlunoComponent {
             icon: 'success',
             html: `<b>Livro atribuído com sucesso!</b><p>O livro foi atribuído corretamente ao aluno.</p>`,
             showConfirmButton: false,
-            timer: 2000
+            timer: 2500
           });
           this.resetarFormulario(); // Reseta o formulário após a atribuição
         },
@@ -189,7 +205,7 @@ export class AtribuirLivroAlunoComponent {
         icon: 'error',
         html: `<b>Erro!</b><p>O ID do livro é inválido.</p>`,
         showConfirmButton: false,
-        timer: 1500
+        timer: 2500
       });
     }
   }
@@ -222,7 +238,7 @@ export class AtribuirLivroAlunoComponent {
       html: `<b>${boldMessage}</b><p>${errorMessage}</p>`,
       icon: iconType,
       showConfirmButton: false,
-      timer: 2000
+      timer: 2500
     });
   }
 }

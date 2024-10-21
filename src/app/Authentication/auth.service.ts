@@ -31,10 +31,8 @@ export class AuthService {
           if (isPlatformBrowser(this.platformId)) {
             localStorage.setItem('token', response.token);
           }
-          console.log('Token:', response.token);
         }),
         catchError(error => {
-          console.error('Login failed', error);
           return throwError(error);
         })
       );
@@ -46,7 +44,6 @@ export class AuthService {
       const token = localStorage.getItem('token');
       if (token) {
         const payload = JSON.parse(atob(token.split('.')[1]));
-        console.log('Payload do token:', payload);
         return payload.userType;
       }
     }

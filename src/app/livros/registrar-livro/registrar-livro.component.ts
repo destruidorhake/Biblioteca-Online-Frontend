@@ -53,7 +53,6 @@ export class RegistrarLivroComponent {
       next: (data) => this.pratileiras = data,
 
       error: (err) => {
-        console.error('Erro ao carregar prateleiras:', err);
         Swal.fire({
           icon: 'error',
           html: `<b>Erro ao carregar prateleiras!</b><p>Tente novamente mais tarde.</p>`
@@ -71,7 +70,6 @@ export class RegistrarLivroComponent {
         }));
       },
       error: (err) => {
-        console.error('Erro ao carregar gêneros textuais:', err);
         Swal.fire({
           icon: 'error',
           html: `<b>Erro ao carregar gêneros textuais!</b><p>Tente novamente mais tarde.</p>`
@@ -89,7 +87,6 @@ export class RegistrarLivroComponent {
         }));
       },
       error: (err) => {
-        console.error('Erro ao carregar gêneros linguísticos:', err);
         Swal.fire({
           icon: 'error',
           html: `<b>Erro ao carregar gêneros linguísticos!</b><p>Tente novamente mais tarde.</p>`
@@ -139,7 +136,6 @@ export class RegistrarLivroComponent {
             resolve(false);
           },
           error: (err) => {
-            console.error('Erro ao verificar existência do livro:', err);
             Swal.fire({
               icon: 'error',
               html: `<b>Erro ao verificar existência do livro!</b><p>Tente novamente mais tarde.</p>`
@@ -159,7 +155,7 @@ export class RegistrarLivroComponent {
         icon: 'info',
         html: `<b>Formulário inválido!</b><p>Por favor, preencha todos os campos obrigatórios!</p>`,
         showConfirmButton: false,
-        timer: 2000
+        timer: 2500
       });
       return;
     }
@@ -198,7 +194,7 @@ export class RegistrarLivroComponent {
           icon: 'success',
           html: `<b>Livro registrado com sucesso!</b><p>O livro foi registrado corretamente.</p>`,
           showConfirmButton: false,
-          timer: 2000
+          timer: 2500
         });
         this.resetarFormulario(); // Chame o método para resetar o formulário após o sucesso
       },
@@ -214,7 +210,7 @@ export class RegistrarLivroComponent {
           html: `<b>Erro!</b><p>${errorMessage}</p>`,
           icon: "error",
           showConfirmButton: false,
-          timer: 2000
+          timer: 2500
         });
       }
     });

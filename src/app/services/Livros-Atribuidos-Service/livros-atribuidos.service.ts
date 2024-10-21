@@ -38,7 +38,6 @@ export class LivrosAtribuidosService {
     return this.http.delete<void>(`${this.apiUrl}/desatribuir/${alunoId}/${livroId}`)
       .pipe(
         catchError(error => {
-          console.error('Erro ao deletar livro atribuído:', error);
           return throwError(() => new Error('Erro ao deletar livro atribuído. Tente novamente mais tarde.'));
         })
       );

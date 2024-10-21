@@ -30,16 +30,6 @@ export class LivrosComponent {
     this.loadLivros();
   }
 
-  private showError(title: string, message: string): void {
-    Swal.fire({
-      title: `<b>${title}</b>`,
-      html: `<p>${message}</p>`,
-      icon: "error",
-      showConfirmButton: false,
-      timer: 3000 // Aumentei o tempo para permitir melhor leitura do usuário
-    });
-  }
-
   getOrdem(index: number): number {
     return index + 1 + (this.currentPage - 1) * this.itemsPerPage;
   }
@@ -111,7 +101,7 @@ export class LivrosComponent {
               `,
               icon: "success",
               showConfirmButton: false,
-              timer: 1500
+              timer: 2500
             });
             this.loadLivros(); // Recarregar a lista após exclusão
           },
@@ -227,7 +217,7 @@ export class LivrosComponent {
               <p>A quantidade foi alterada com sucesso!</p>
             `,
             showConfirmButton: false,
-            timer: 1500
+            timer: 2500
           });
           this.loadLivros(); // Recarrega a lista de livros para refletir as mudanças
         }, (error) => {
@@ -238,7 +228,7 @@ export class LivrosComponent {
               <p>Houve um problema ao atualizar a quantidade!</p>
             `,
             showConfirmButton: false,
-            timer: 1500
+            timer: 2500
           });
         });
       }
