@@ -69,10 +69,7 @@
               "buildTarget": "Biblioteca-Online:build:production"
             },
             "development": {
-              "buildTarget": "Biblioteca-Online:build:development",
-              "ssl": true,
-              "sslKey": "path/to/your/server.key",
-              "sslCert": "path/to/your/server.crt"
+              "buildTarget": "Biblioteca-Online:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -6,7 +6,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; // Adicionar HTTP_INTERCEPTORS
+import { HttpClientModule, HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http'; // Adicionar provideHttpClient e withFetch
 
 // Importando os serviços
 import { AlunosService } from './services/alunos-service/alunos.service';
@@ -17,8 +17,6 @@ import { UsuariosService } from './services/user-service/usuarios.service';
 import { LivrosAtribuidosService } from './services/Livros-Atribuidos-Service/livros-atribuidos.service';
 import { PratileiraService } from './services/Pratileiras.Service/pratileira.service';
 import { JwtInterceptor } from './Authentication/JwtInterceptor';
-
-// Importando o interceptor JWT
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -42,6 +40,9 @@ export const appConfig: ApplicationConfig = {
 
     // Adicionando o interceptor JWT
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+
+    // Habilitando o HttpClient com fetch
+    provideHttpClient(withFetch()), // Adicionando o provideHttpClient com withFetch
 
     // Otimizando a detecção de mudanças
     provideZoneChangeDetection({ eventCoalescing: true }),
