@@ -137,7 +137,7 @@ export class AtribuirLivroAlunoComponent {
         Swal.fire({
           icon: 'warning',
           html: `<b>Atenção!</b><p>Você não pode atribuir mais livros do que a quantidade disponível.</p>
-                 <b>Altere a quantidade na pagina de: </p><b>Livros Cadastrados</b>`,
+                 <p>Altere a quantidade na pagina de: Livros Cadastrados</p>`,
           showConfirmButton: false,
           timer: 1500
         });
