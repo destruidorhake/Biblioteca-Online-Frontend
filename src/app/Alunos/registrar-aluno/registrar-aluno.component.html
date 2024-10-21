@@ -1,0 +1,28 @@
+<div class="background">
+  <p class="titulo">Registrar Aluno</p>
+
+  <div class="container">
+    <div class="form-container sign-in-container">
+      <form (ngSubmit)="onSubmit()" [formGroup]="RegistrarAluno">
+        <h1>Cadastro de Aluno</h1>
+        <span>Preencha os dados abaixo para registrar o aluno</span>
+        <input type="text" placeholder="Nome do Aluno" formControlName="nomeAluno" (input)="formatarTexto($event)" name="nomeAluno"/>
+        <input type="text" placeholder="Sobrenome do Aluno" formControlName="sobrenomeAluno" (input)="formatarTexto($event)" name="sobrenomeAluno"/>
+        <input type="number" placeholder="Idade" formControlName="idadeAluno" ngModel />
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <div class="infoAlunos">
+            <h1>Sobre o Cadastro de Alunos</h1>
+            <p>Na página de cadastro de alunos, você pode registrar novos alunos no sistema,
+              associá-los aos livros desejados, editar suas informações e também removê-los, se necessário.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

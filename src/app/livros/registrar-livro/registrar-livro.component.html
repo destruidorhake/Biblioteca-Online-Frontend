@@ -1,0 +1,58 @@
+<div class="background">
+  <p class="titulo">Adicionar Livro</p>
+
+  <div class="container" [ngClass]="{'right-panel-active': true}">
+    <div class="form-container sign-up-container">
+      <form (ngSubmit)="onSubmit()" [formGroup]="RegistrarLivro">
+        <h1>Cadastrar um livro nas pratileiras</h1>
+        <span>Adicione os dados do livro a cadastrar</span>
+
+        <input type="text" class="form-control" id="nomeLivro" formControlName="nomeLivro" placeholder="Nome"
+          required autocomplete="new-password" (input)="capitalizeInput($event, 'nomeLivro')" (blur)="verificarLivroExistente()">
+
+        <input type="text" class="form-control autor" id="autorLivro" formControlName="autorLivro"
+          placeholder="Autor" required autocomplete="new-password" (input)="capitalizeInput($event, 'autorLivro')">
+
+        <select id="generoTextual" class="form-control" formControlName="generoTextual" required>
+          <option value="" disabled selected>Selecione o Gênero Textual</option>
+          <option *ngFor="let genero of generosTextuais" [value]="genero.id">
+            {{ genero.tipo }}
+          </option>
+        </select>
+
+        <select id="generoLinguistico" class="form-control" formControlName="generoLinguistico" required>
+          <option value="" disabled selected>Selecione o Gênero Linguístico</option>
+          <option *ngFor="let genero of generosLinguisticos" [value]="genero.id">
+            {{ genero.tipo }}
+          </option>
+        </select>
+
+        <select id="pratileira" class="form-control" formControlName="pratileira" required>
+          <option value="" disabled selected>Selecione a Prateleira</option>
+          <option *ngFor="let pratileira of pratileiras" [value]="pratileira.idPratileira">
+            {{ pratileira.nomePratileira }}
+          </option>
+        </select>
+
+        <input type="hidden" formControlName="sequencia" value="1">
+        <input type="hidden" formControlName="quantidadeLivro" value="1">
+        <input type="hidden" formControlName="idLivro">
+
+        <button type="submit">Registrar</button>
+      </form>
+    </div>
+
+    <!-- Informações visuais escrita -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <div class="infoLivros">
+            <h1>Sobre o Registro de Livros</h1>
+            <p>Na página de registro de livros, você pode registrar novos livros no sistema,
+              associá-los aos alunos desejados, editar suas informações e também removê-los, se necessário.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

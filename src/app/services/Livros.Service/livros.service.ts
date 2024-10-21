@@ -1,0 +1,110 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { catchError, Observable, tap, throwError } from 'rxjs';
+import { environment } from '../../Authentication/environment';
+import { Livro } from '../../models/livros.model';
+import { AuthService } from '../../Authentication/auth.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LivrosService {
+  private apiUrl = `${environment.local}`;
+
+  constructor(private http: HttpClient) {}
+
+  saveLivro(livroData: Livro): Observable<Livro> {
+    return this.http.post<Livro>(`${this.apiUrl}/livros`, livroData)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao salvar livro:', error);
+          return throwError(() => new Error('Erro ao salvar livro. Tente novamente mais tarde.'));
+        })
+      );
+  }
+
+  updateLivro(id: number, livroData: Livro): Observable<Livro> {
+    return this.http.put<Livro>(`${this.apiUrl}/livros/${id}`, livroData)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao atualizar livro:', error);
+          return throwError(() => new Error('Erro ao atualizar livro. Tente novamente mais tarde.'));
+        })
+      );
+  }
+
+  updateSequenciaLivro(id: number, novaSequencia: number): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/livros/sequencia/${id}`, novaSequencia)
+    .pipe(
+      catchError(error => {
+        console.error('Erro ao atualizar sequência do livro:', error);
+        return throwError(() => new Error('Erro ao atualizar sequência do livro. Tente novamente mais tarde.'));
+      })
+    );
+}
+
+  updateQuantidadeLivro(id: number, livroAtualizado: Livro): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/livros/quantidade/${id}`, livroAtualizado)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao atualizar quantidade do livro:', error);
+          return throwError(() => new Error('Erro ao atualizar quantidade do livro. Tente novamente mais tarde.'));
+        })
+      );
+  }
+
+  getLivros(): Observable<Livro[]> {
+    return this.http.get<Livro[]>(`${this.apiUrl}/livros`)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao buscar livros:', error);
+          return throwError(() => new Error('Erro ao buscar livros. Tente novamente mais tarde.'));
+        })
+      );
+  }
+
+  getSequenciaLivros(id: number): Observable<{ idLivro: number; sequencia: number }> {
+    return this.http.get<{ idLivro: number; sequencia: number }>(`${this.apiUrl}/livros/sequencia/${id}`)
+    .pipe(
+      catchError(error => {
+        console.error('Erro ao buscar sequência de livros:', error);
+        return throwError(() => new Error('Erro ao buscar sequência de livros. Tente novamente mais tarde.'));
+      })
+    );
+}
+
+  deleteLivro(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/livros/${id}`)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao deletar livro:', error);
+          return throwError(() => new Error('Erro ao deletar livro. Tente novamente mais tarde.'));
+        })
+      );
+  }
+
+  deleteLivroCadastrado(id: number) {
+    console.log(id);
+    return this.http.delete(`${this.apiUrl}/livros/${id}`);
+  }
+
+  getLivroByNome(nomeLivro: string): Observable<Livro[]> {
+    return this.http.get<Livro[]>(`${this.apiUrl}/livros?nomeLivro=${encodeURIComponent(nomeLivro)}`)
+      .pipe(
+        catchError(error => {
+          console.error('Erro ao buscar livro por nome:', error);
+          return throwError(() => new Error('Erro ao buscar livro por nome. Tente novamente mais tarde.'));
+        })
+      );
+  }
+
+  getLivroById(id: number): Observable<Livro> {
+    return this.http.get<Livro>(`${this.apiUrl}/livros/${id}`)
+    .pipe(
+      catchError(error => {
+        console.error('Erro ao buscar livro por ID:', error);
+        return throwError(() => new Error('Erro ao buscar livro por ID. Tente novamente mais tarde.'));
+      })
+    );
+}
+}
