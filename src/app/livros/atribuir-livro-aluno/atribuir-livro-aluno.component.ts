@@ -136,7 +136,8 @@ export class AtribuirLivroAlunoComponent {
       if (this.livroSequencia[idLivro] >= Livro.quantidadeLivro) {
         Swal.fire({
           icon: 'warning',
-          html: `<b>Atenção!</b><p>Você não pode atribuir mais livros do que a quantidade disponível.</p>`,
+          html: `<b>Atenção!</b><p>Você não pode atribuir mais livros do que a quantidade disponível.</p>
+                 <b>Altere a quantidade na pagina de: </p><b>Livros Cadastrados</b>`,
           showConfirmButton: false,
           timer: 1500
         });
