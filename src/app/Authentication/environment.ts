@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
-  local: 'http://localhost:8080',
-  local2: 'http://localhost:8080'
+  local: 'https://biblioteca-online-backend-production.up.railway.app'
+  //local: 'http://localhost:8080'
+  //Use LocalHost para desenvolvimento e testes
 };
