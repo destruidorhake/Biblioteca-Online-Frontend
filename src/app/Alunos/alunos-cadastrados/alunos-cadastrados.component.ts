@@ -83,20 +83,30 @@ export class AlunosCadastradosComponent {
             this.updatePaginatedAlunos(); // Atualiza os alunos paginados
           },
           error: (error) => {
-            let errorMessage = 'Erro ao tentar apagar o aluno. Tente novamente.';
+            let errorMessage = '<b>Erro ao tentar apagar o aluno:</b> Tente novamente.';
+            let iconType: 'error' | 'warning' | 'info' = 'error';  // Ícone padrão
+
             if (error.status === 404) {
-              errorMessage = 'Aluno não encontrado.';
+              errorMessage = '<b>Aluno não encontrado:</b> O aluno especificado não foi localizado. Por favor, tente novamente.';
+              iconType = 'info';
             } else if (error.status === 500) {
-              errorMessage = 'Erro ao tentar excluir o aluno.';
+              errorMessage = '<b>Erro de Exclusão:</b> Ocorreu um erro ao tentar excluir o aluno. Por favor, tente novamente.';
+              iconType = 'error';
+            } else if (error.status === 409) {
+              errorMessage = '<b>Erro de Exclusão:</b> Existem relações vinculadas que impedem a exclusão deste aluno.';
+              iconType = 'warning';
+            } else if (error.status === 400) {
+              errorMessage = '<b>Erro de Requisição:</b> Verifique os dados enviados e tente novamente.';
+              iconType = 'warning';
             }
 
             Swal.fire({
               html: `
-                <b>Erro!</b>
+                <b>Atenção!</b>
                 <p>${errorMessage}</p>
               `,
-              icon: "error",
-              confirmButtonText: "Fechar"
+              icon: iconType,
+              confirmButtonText: 'Fechar'
             });
             this.loadAlunos(); // Carrega novamente a lista de alunos
           }

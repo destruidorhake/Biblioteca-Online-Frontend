@@ -109,7 +109,6 @@ export class LivrosComponent {
             let errorMessage = 'Erro ao tentar apagar o livro. Tente novamente.';
             let iconType: 'error' | 'warning' | 'info' = 'error';  // Ícone padrão
 
-
             if (error.status === 404) {
               errorMessage = 'Livro não encontrado.';
               iconType = 'info';
