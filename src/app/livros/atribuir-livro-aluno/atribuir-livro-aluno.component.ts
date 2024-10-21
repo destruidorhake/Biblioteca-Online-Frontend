@@ -151,11 +151,16 @@ export class AtribuirLivroAlunoComponent {
       if (this.livroSequencia[idLivro] >= Livro.quantidadeLivro) {
         Swal.fire({
           icon: 'warning',
-          html: `<b>Atenção!</b><p>Você não pode atribuir mais livros do que a quantidade disponível.</p>
-                 <p>Altere a quantidade na pagina de: Livros Cadastrados</p>`,
+          html: `
+            <b>Atenção!</b>
+            <p>Não é possível atribuir mais livros do que a quantidade disponível. Por favor, ajuste a quantidade na página de <b>Livros Cadastrados</b>.</p>
+            <b>Detalhes:</b>
+            <p>A sequência atual para este livro é <b>${this.livroSequencia[idLivro]}</b>, mas há apenas <b>${Livro.quantidadeLivro}</b> exemplares disponíveis.</p>
+          `,
           showConfirmButton: false,
-          timer: 2500
+          timer: 3000
         });
+
         return false;
       }
     } else {
@@ -187,14 +192,6 @@ export class AtribuirLivroAlunoComponent {
         },
         error: (error) => this.handleError(error)
       });
-      if (idLivro !== null) {
-        Swal.fire({
-          icon: 'info',
-          html: `<b>Atenção!</b><p>A sequência atual é ${this.livroSequencia[idLivro]} de ${Livro.quantidadeLivro} disponíveis.</p>`,
-          showConfirmButton: false,
-          timer: 2500
-        });
-      }
     } else {
       Swal.fire({
         icon: 'error',
