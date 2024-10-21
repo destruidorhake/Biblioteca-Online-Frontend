@@ -114,7 +114,6 @@ export class AtribuirLivroAlunoComponent {
     if (this.isFormInvalid()) return;
     if (!this.validateBookQuantity(Livro)) return;
 
-    this.showSequenceMessage(Livro);
     this.assignBook(Aluno, Livro, dataRegistro);
   }
 
@@ -171,18 +170,6 @@ export class AtribuirLivroAlunoComponent {
     return true;
   }
 
-  private showSequenceMessage(Livro: Livro): void {
-    const idLivro = Livro.idLivro;
-    if (idLivro !== null) {
-      Swal.fire({
-        icon: 'info',
-        html: `<b>Atenção!</b><p>A sequência atual é ${this.livroSequencia[idLivro]} de ${Livro.quantidadeLivro} disponíveis.</p>`,
-        showConfirmButton: false,
-        timer: 2500
-      });
-    }
-  }
-
   private assignBook(Aluno: any, Livro: Livro, dataRegistro: string): void {
     const idLivro = Livro.idLivro;
 
@@ -200,6 +187,14 @@ export class AtribuirLivroAlunoComponent {
         },
         error: (error) => this.handleError(error)
       });
+      if (idLivro !== null) {
+        Swal.fire({
+          icon: 'info',
+          html: `<b>Atenção!</b><p>A sequência atual é ${this.livroSequencia[idLivro]} de ${Livro.quantidadeLivro} disponíveis.</p>`,
+          showConfirmButton: false,
+          timer: 2500
+        });
+      }
     } else {
       Swal.fire({
         icon: 'error',
