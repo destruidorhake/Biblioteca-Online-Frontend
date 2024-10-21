@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from './environment';
+import { isPlatformBrowser } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +12,15 @@ import { environment } from './environment';
 export class AuthService {
   private baseUrl = environment.local;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   // Verifica se o usuário está logado
   isLoggedIn(): boolean {
-    // Verifica se estamos no ambiente de navegador
-    if (typeof window !== 'undefined' && window.localStorage) {
+    if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('token');
-      return !!token; // Retorna true se o token existir
+      return !!token;
     }
-    return false; // Retorna false se não estiver no navegador
+    return false;
   }
 
   // Faz o login do usuário
@@ -27,8 +28,10 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/api/auth/login`, { usuarioProfessor: email, senhaProfessor: password })
       .pipe(
         tap(response => {
-          localStorage.setItem('token', response.token);
-          console.log('Token:', response.token); // Adicione este log para ver o token
+          if (isPlatformBrowser(this.platformId)) {
+            localStorage.setItem('token', response.token);
+          }
+          console.log('Token:', response.token);
         }),
         catchError(error => {
           console.error('Login failed', error);
@@ -39,18 +42,22 @@ export class AuthService {
 
   // Obtém o tipo de usuário do token
   getUserType(): string | null {
-    const token = localStorage.getItem('token');
-    if (token) {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      console.log('Payload do token:', payload); // Adicione este log para verificar o payload
-      return payload.userType; // Isso assume que o userType está no payload
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        console.log('Payload do token:', payload);
+        return payload.userType;
+      }
     }
     return null;
   }
 
   // Remove a sessão do usuário
   logout(): void {
-    localStorage.removeItem('token'); // Remove o token do localStorage
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem('token');
+    }
   }
 
   // Redefine a senha
