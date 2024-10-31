@@ -3,8 +3,8 @@
   <div class="table-wrapper">
     <div class="input-group">
       <input class="pesquisar" #searchInput id="search" type="text" (keyup)="applyFilter($event)"
-        placeholder="Pesquisar por Nome do Livro, Autor, Sequência ou Quantidade">
-      <button type="button" class="icone" (click)="applyFilter()"> <i class="bi bi-search"></i></button>
+        placeholder="Pesquisar Livro, Autor, Sequência ou Quantidade">
+      <button type="button" class="icone esconder" (click)="applyFilter()"> <i class="bi bi-search"></i></button>
     </div>
       <table class="fl-table">
           <thead>

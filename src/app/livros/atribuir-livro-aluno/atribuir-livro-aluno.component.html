@@ -1,10 +1,10 @@
 <div class="background">
-  <p class="titulo">Atribuir Livro ao Aluno</p>
+  <p class="titulo">Associar Livro</p>
 
-  <div class="container">
+  <div class="container" [ngClass]="{'container-expandido': expandirContainer}">
     <div class="form-container sign-in-container">
       <form (ngSubmit)="onSubmit()" [formGroup]="AtribuirForm">
-        <h1>Atribuição de Livro ao Aluno</h1>
+        <h1>Livro para Aluno</h1>
         <span>Preencha as informações abaixo para atribuir um livro ao aluno:</span>
 
         <select id="livro" class="form-control" formControlName="Livro" required>
@@ -22,7 +22,19 @@
         </select>
 
         <input type="date" id="dataRegistro" class="form-control sobe" formControlName="dataRegistro" required (click)="openDatePicker()"/>
-        <button type="submit">Atribuir Livro</button>
+        <div class="botoes-container">
+          <button class="btn btn-primary" type="submit">Registrar</button>
+          <button class="btn btn-secondary mostrar" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
+              aria-controls="collapseExample" type="button" (click)="toggleExpandir()">Sobre</button>
+        </div>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <h1>Atribuição de Livros</h1>
+            <p>Nesta seção, você pode vincular um livro específico a um aluno.
+               Após a atribuição, o livro aparecerá na lista de livros do aluno,
+               onde será possível gerenciar essa atribuição conforme necessário.</p>
+          </div>
+        </div>
       </form>
     </div>
 

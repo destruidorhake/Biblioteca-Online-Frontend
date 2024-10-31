@@ -21,7 +21,6 @@
   text-decoration: underline;
   text-transform: uppercase;
   font-size:16px;
-  text-transform:uppercase;
   margin-top:5px;
   letter-spacing:2px
 }
@@ -158,4 +157,21 @@
   }
 }
 
+/* Ajuste para dispositivos móveis (até 480px) */
+@media (max-width: 480px) {
+  .celular_espaco {
+    margin-top: 90dvh;
+  }
+
+  .site-footer {
+    z-index: -10;
+    background-color:#ff4360;
+    padding:45px 0 20px;
+    font-size:15px;
+    line-height:24px;
+    color:white;
+    padding-left: 5dvw;
+    padding-right : 5dvw;
+  }
+}
 

@@ -22,6 +22,7 @@ export class RegistrarLivroComponent {
   pratileiras: any[] = [];
   generosTextuais: GeneroTextual[] = [];
   generosLinguisticos: GeneroLinguistico[] = [];
+  expandirContainer = false;
 
   constructor(
     private fb: FormBuilder,
@@ -239,5 +240,9 @@ export class RegistrarLivroComponent {
 
   transformToCapitalize(value: string): string {
     return value.replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+
+  toggleExpandir() {
+    this.expandirContainer = !this.expandirContainer;
   }
 }

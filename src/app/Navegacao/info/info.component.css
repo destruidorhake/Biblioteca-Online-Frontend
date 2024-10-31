@@ -6,158 +6,256 @@
 }
 
 * {
-  box-sizing: border-box;
+  margin: 0;
+	padding: 0;
 }
 
 body {
-  margin: 0;
-  height: auto;
-  font-family: 'Open Sans';
-  background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	background: #161616;
+	min-height: 100vh;
 }
 
 .tela {
-  width: 75%;
-  margin: 0 auto;
-  overflow-x: auto;
-  height: 100dvh
-}
-
-a {
-  color: inherit;
-}
-
-.cards-wrapper {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 4rem;
-  padding: 4rem;
-  margin: 0 auto;
-  width: max-content;
-}
-
-.card {
-  font-family: 'Heebo';
-  background-color: #ff4360;
-  height: 20em;
-  width: 15em;
-  font-size: 1.5em;
-  color: white;
-  border-radius: 0.5em;
-  padding: 1em;
-  display: flex;
-  align-items: flex-end;
-  box-shadow: 0 0 2em -1em black;
-  border: 0.5rem double #ccc;
-  transition: all var(--transition-time);
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  overflow-y: none;
+  height: 100%;
 }
 
-.card h1 {
-  text-transform: uppercase;
-  margin: 0;
-  font-size: 1.5em;
-  line-height: 1.2em;
-  color: white;
+.sessao {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow-y: none;
+  height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
 }
-
-.card p {
-  color: white;
-  font-size: 0.75em;
-  margin-top: 0.5em;
-  line-height: 2em;
-}
-
-.card-grid-space .num {
-  font-size: 3em;
-  margin-bottom: 1.2rem;
-  margin-left: 1rem;
-}
-
 
 .titulo {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   position: relative;
   text-align: center;
-  padding-top: 7dvh;
+  padding-top: 3%; /* Mantém o espaçamento em relação ao topo da tela */
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 300%;
+  font-size: 300%; /* Tamanho da fonte padrão (desktop) */
   padding-bottom: 3dvh;
   color: rgb(0, 0, 0);
   text-decoration: underline;
 }
 
-/* MEDIA QUERIES */
-@media screen and (max-width: 1285px) {
-  .cards-wrapper {
-    grid-template-columns: 1fr 1fr;
+/* Ajuste para telas HD e menores (até 1280px) */
+@media (max-width: 1280px) {
+  .titulo {
+    font-size: 250%; /* Reduz o tamanho da fonte em telas HD */
   }
 }
 
-@media screen and (max-width: 900px) {
-  .cards-wrapper {
-    grid-template-columns: 1fr;
-  }
-  .card-grid-space .num {
-    margin-left: 0;
-    text-align: center;
+/* Ajuste para telas de tablets e monitores menores (até 768px) */
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 200%; /* Reduz ainda mais em tablets e monitores pequenos */
   }
 }
 
-@media screen and (max-width: 500px) {
-  .cards-wrapper {
-    padding: 4rem 2rem;
+/* Ajuste para dispositivos móveis (até 480px) */
+@media (max-width: 480px) {
+  .titulo {
+    padding-top: 5dvh;
+    font-size: 200%;
+    word-wrap: break-word; /* Força a quebra de linha */
+    overflow-wrap: break-word; /* Compatível com mais navegadores */
   }
-  .card {
-    max-width: calc(100vw - 4rem);
+
+  .celular_espaco {
+    padding-top: 200px;
   }
 }
 
-@media screen and (max-width: 450px) {
-  .info {
-    display: block;
-    text-align: center;
-  }
-  .info h1 {
-    margin: 0;
-  }
+.container {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 40px 0;
 }
 
-.path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: dash 3s linear forwards;
-  animation-iteration-count: 1;
-  animation-delay: 1s;
+.container .card {
+	position: relative;
+	width: 200px;
+	height: 300px;
+	background: rgba(255, 255, 255, 0.05);
+	margin: 20px;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	backdrop-filter: blur(10px);
 }
-@keyframes dash {
-  to {
-      stroke-dashoffset: 0;
-  }
+
+.container .card .content {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transition: 0.5s;
 }
-.dashed {
-  stroke-dasharray: 5, 12;
+
+.container .card:hover .content {
+	transform: translateY(-20px);
 }
-#arrow {
-  animation: arrow 2s linear forwards;
+
+.container .card .content .aluno {
+  background-image: url("../../Imagens/aluno.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: relative;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+}
+
+.container .card .content .manual {
+  background-image: url("../../Imagens/manual.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: relative;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+}
+
+.container .card .content .professor {
+  background-image: url("../../Imagens/professor.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: relative;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+}
+
+.container .card .content .livro {
+  background-image: url("../../Imagens/livro.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: relative;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+}
+
+.container .card .content .aluno .professor .livro .manual {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.container .card .content .contentBx h3 {
+	color: #ff4360;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: 500;
+	font-size: 18px;
+	text-align: center;
+	margin: 20px 0 10px;
+	line-height: 1.1em;
+}
+
+.container .card .content .contentBx h3 span {
+	font-size: 12px;
+	font-weight: 300;
+	text-transform: initial;
+}
+
+.container .card .sci {
+	position: absolute;
+	bottom: 0px;
+	display: flex;
+}
+
+.container .card .sci li {
+	list-style: none;
+	transform: translateY(40px);
+	transition: 0.5s;
+	opacity: 0;
+}
+
+.container .card:hover .sci li {
+  background-color: rgba(0, 0, 0, 0.705);
+	transform: translateY(0px);
+	opacity: 1;
+  border-end-start-radius: 15px;
+  border-end-end-radius: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.container .card .sci li a {
+  font-style: normal;
+	color: white;
+	font-size: 1em;
+}
+
+.espaco {
+  margin-top: 5px;
+}
+
+.arrow-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  text-align: center; /* Alinha o texto ao centro */
+}
+
+.arrow {
+  border: solid #ff4360;
+  border-width: 0 6px 6px 0;
+  display: inline-block;
+  padding: 10px;
+  transform: rotate(45deg);
+  transition: transform 0.5s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+.arrow-text {
+  font-size: 0px;
+  color: rgb(255, 0, 0);
+  margin-bottom: -10px; /* Ajuste a margem inferior para posicionar o texto mais próximo da seta */
   opacity: 0;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Suaviza a transição do texto */
 }
-@keyframes arrow {
-  to {
-      opacity: 1;
-  }
+
+.arrow:hover {
+  cursor: pointer;
+  border-color: #8b2133;
+  cursor: pointer;
+  transform: rotate(45deg) scale(0.8); /* Diminui a seta em 10% quando o mouse passa por cima */
 }
-.ifrm {
-  border: none;
-  width: 100%;
-  margin-top: 50px;
+
+body, html {
+  scroll-behavior: smooth;
 }
-.seta {
-  margin-top: -15dvh;
-  margin-bottom: 5dvh;
-  z-index: -10;
+
+.arrow-container:hover .arrow-text {
+  font-size: 11px;
+  transform: scale(0.9); /* Diminui o texto ligeiramente ao passar o mouse */
+  opacity: 1; /* Reduz a opacidade do texto para dar destaque à seta */
 }

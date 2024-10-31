@@ -23,6 +23,8 @@ export class AtribuirLivroAlunoComponent {
   livros: Livro[] = [];
   alunos: Aluno[] = [];
   livroSequencia: { [key: number]: number } = {}; // Inicializa como um objeto
+  expandirContainer = false;
+
 
 
   constructor(
@@ -232,5 +234,9 @@ export class AtribuirLivroAlunoComponent {
       showConfirmButton: false,
       timer: 2500
     });
+  }
+
+  toggleExpandir() {
+    this.expandirContainer = !this.expandirContainer;
   }
 }

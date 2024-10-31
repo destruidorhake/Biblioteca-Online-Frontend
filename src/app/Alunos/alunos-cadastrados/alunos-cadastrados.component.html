@@ -2,8 +2,8 @@
   <p class="titulo">Alunos Cadastrados</p>
   <div class="table-wrapper">
     <div class="input-group">
-      <input class="pesquisar" #searchInput id="search" type="text" (keyup)="applyFilter($event)" placeholder="Pesquisar por Nome do Aluno, Estado da Prateleira ou Ativo">
-      <button type="button" class="icone" (click)="applyFilter()"><i class="bi bi-search"></i></button>
+      <input class="pesquisar" #searchInput id="search" type="text" (keyup)="applyFilter($event)" placeholder="Pesquisar Aluno, Prateleira ou Status">
+      <button type="button" class="icone esconder" (click)="applyFilter()"><i class="bi bi-search"></i></button>
     </div>
     <table class="fl-table">
       <thead>

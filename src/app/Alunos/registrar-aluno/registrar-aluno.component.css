@@ -65,31 +65,6 @@ a {
 	margin: 15px 0;
 }
 
-button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
-
-button:active {
-	transform: scale(0.95);
-}
-
-button:focus {
-	outline: none;
-}
-
-button.ghost {
-	background-color: transparent;
-	border-color: #FFFFFF;
-}
-
 form {
 	background-color: #FFFFFF;
 	display: flex;
@@ -283,3 +258,76 @@ footer a {
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
+
+.mostrar {
+  display: none;
+}
+
+.botoes-container {
+  width: 100%;
+  display: flex;
+  gap: 5px; /* Espaço entre os botões */
+  justify-content: space-between; /* Ocupa o espaço de forma proporcional */
+  margin-top: 15px;
+}
+
+.botoes-container .btn {
+  flex: 1; /* Cada botão ocupará o mesmo espaço */
+  text-transform: uppercase;
+}
+
+
+/* Ajuste para telas HD e menores (até 1280px) */
+@media (max-width: 1280px) {
+  .titulo {
+    font-size: 250%; /* Reduz o tamanho da fonte em telas HD */
+  }
+}
+
+/* Ajuste para telas de tablets e monitores menores (até 768px) */
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 200%; /* Reduz ainda mais em tablets e monitores pequenos */
+  }
+}
+
+/* Ajuste para dispositivos móveis (até 480px) */
+@media (max-width: 480px) {
+  .titulo {
+    padding-top: 5dvh;
+    font-size: 200%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .mostrar {
+    display: block;
+  }
+
+ .overlay-container {
+  display: none;
+ }
+
+  .container {
+    margin: auto;
+    width: 80dvw;
+    max-width: 90dvw;
+    height: 450px;
+    min-height: 450px;
+    transition: height 1s linear;
+  }
+
+  .container-expandido {
+    min-height: 600px;
+  }
+
+  .sign-in-container {
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  form {
+    padding: 0 20px;
+  }
+}
+

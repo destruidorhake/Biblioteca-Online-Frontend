@@ -1,7 +1,7 @@
 <div class="background">
   <p class="titulo">Registrar Aluno</p>
 
-  <div class="container">
+  <div class="container" [ngClass]="{'container-expandido': expandirContainer}">
     <div class="form-container sign-in-container">
       <form (ngSubmit)="onSubmit()" [formGroup]="RegistrarAluno">
         <h1>Cadastro de Aluno</h1>
@@ -9,7 +9,18 @@
         <input type="text" placeholder="Nome do Aluno" formControlName="nomeAluno" (input)="formatarTexto($event)" name="nomeAluno"/>
         <input type="text" placeholder="Sobrenome do Aluno" formControlName="sobrenomeAluno" (input)="formatarTexto($event)" name="sobrenomeAluno"/>
         <input type="number" placeholder="Idade" formControlName="idadeAluno" ngModel />
-        <button type="submit">Registrar</button>
+        <div class="botoes-container">
+          <button class="btn btn-primary" type="submit">Registrar</button>
+          <button class="btn btn-secondary mostrar" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
+              aria-controls="collapseExample" type="button" (click)="toggleExpandir()">Sobre</button>
+        </div>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <h1>Cadastro de Alunos</h1>
+            <p>Na página de cadastro de alunos, você pode registrar novos alunos no sistema,
+              associá-los aos livros desejados, editar suas informações e também removê-los, se necessário.</p>
+          </div>
+        </div>
       </form>
     </div>
 

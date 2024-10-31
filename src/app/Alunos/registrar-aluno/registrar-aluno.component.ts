@@ -18,6 +18,7 @@ export class RegistrarAlunoComponent {
   RegistrarAluno: FormGroup;
   limpaFormulario: string | null = null;
   idadeInvalida: boolean = false;
+  expandirContainer = false;
 
   constructor(private fb: FormBuilder, private alunosService: AlunosService) {
     this.RegistrarAluno = this.fb.group({
@@ -117,5 +118,10 @@ export class RegistrarAlunoComponent {
       .join(' ');
     input.value = textoFormatado;
     this.RegistrarAluno.get(input.name)?.setValue(textoFormatado); // Atualiza o valor do FormGroup
+  }
+
+
+  toggleExpandir() {
+    this.expandirContainer = !this.expandirContainer;
   }
 }

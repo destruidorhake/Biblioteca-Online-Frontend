@@ -12,12 +12,12 @@
       <input type="email" class="form-control" id="email" formControlName="email" placeholder="E-mail" required autocomplete="new-password">
       <input type="text" class="form-control" id="numeroDocumento" formControlName="numeroDocumento" placeholder="CPF ou CNPJ" required>
 
-      <div class="d-flex justify-content-between">
-        <button class="espaco btn btn-secondary" [routerLink]="'/login'" [disabled]="isSubmitting">Cancelar</button>
-        <button class="espaco botao_cor" type="submit" [disabled]="isSubmitting">
-          <span *ngIf="!isSubmitting">Resetar</span>
-          <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          <span *ngIf="isSubmitting"> Enviando...</span>
+      <div class="botoes-container">
+        <button class="btn btn-secondary" type="button" [routerLink]="'/login'" [disabled]="isSubmitting"><a>Cancelar</a></button>
+        <button class="btn btn-primary" type="submit" [disabled]="isSubmitting">
+          <a *ngIf="!isSubmitting">Resetar</a>
+          <a *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></a>
+          <a *ngIf="isSubmitting"> Enviando...</a>
         </button>
       </div>
     </form>

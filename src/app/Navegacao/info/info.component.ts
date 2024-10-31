@@ -9,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class InfoComponent {
 
+  scrollDown() {
+    window.scrollBy({
+      top: window.innerHeight, // scrolla uma tela inteira para baixo
+      behavior: 'smooth'
+    });
+  }
 }

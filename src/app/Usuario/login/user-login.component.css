@@ -4,24 +4,6 @@
 	box-sizing: border-box;
 }
 
-.headerNome {
-  font-size: 60px;
-  align-items: start;
-  position: fixed;
-  margin-top: -35%;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 5dvh;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding-bottom: 3dvh;
-  font-style: normal;
-  color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  text-decoration: underline;
-}
-
 .background {
   background-color: transparent;
   background-image: url('../../Imagens/livo.jpg');
@@ -73,30 +55,15 @@ a {
 	margin: 15px 0;
 }
 
-button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
+.botoes-container {
+  width: 100%;
+  display: flex;
+  gap: 5px;
 }
 
-button:active {
-	transform: scale(0.95);
-}
-
-button:focus {
-	outline: none;
-}
-
-button.ghost {
-	background-color: transparent;
-	border-color: #FFFFFF;
+.botoes-container .btn {
+  flex: 1; /* Cada botão ocupará o mesmo espaço */
+  text-transform: uppercase;
 }
 
 form {
@@ -282,4 +249,132 @@ footer a {
 
 input.ng-invalid.ng-touched {
   border: 1px solid red;
+}
+
+.corLetra {
+  color: black;
+  text-transform: uppercase;
+  font-size: medium;
+  text-decoration: underline;
+  text-decoration-line: underline;
+}
+
+.headerNome {
+  font-size: 60px;
+  align-items: start;
+  position: absolute;
+  top: 0px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5dvh;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-bottom: 3dvh;
+  font-style: normal;
+  color: white;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  text-decoration: underline;
+  z-index: 1100;
+}
+
+.esconder {
+  display: block;
+}
+
+/* Ajuste para telas HD e menores (até 1280px) */
+@media (max-width: 1280px) {
+  .headerNome {
+    font-size: 250%;
+  }
+}
+
+/* Ajuste para telas de tablets e monitores menores (até 768px) */
+@media (max-width: 768px) {
+  .headerNome {
+    font-size: 200%; /* Reduz ainda mais em tablets e monitores pequenos */
+  }
+}
+
+
+/* Ajuste para dispositivos móveis (até 480px) */
+@media (max-width: 480px) {
+  .headerNome {
+    top: 25 0px;
+    font-size: 250%;
+  }
+
+  .background {
+    background-color: transparent;
+    background-image: url('../../Imagens/livo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-position-y: 0vh;
+  }
+
+  .esconder {
+    display: none;
+  }
+
+  .sign-in-container {
+    left: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+  }
+
+  .sign-up-container {
+    left: -100%;
+    width: 100%;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+  }
+
+  .overlay-container {
+    display: none;
+  }
+
+  .container {
+    background-image: url('../../Imagens/fundoLogin.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 40%;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    max-width: 90%;
+    min-height: 400px;
+  }
+
+  form {
+    background-image: url('../../Imagens/fundoLogin.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 40%;
+  }
+
+  .corLetra {
+    color: white;
+    text-transform: uppercase;
+    font-size: medium;
+    text-decoration: underline;
+    text-decoration-line: underline;
+  }
 }
