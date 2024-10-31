@@ -15,7 +15,7 @@
           <input type="hidden" formControlName="idAtivo" value="1"/> <!-- Campo oculto para idAtivo -->
           <div class="botoes-container">
             <button class="btn btn-primary" type="submit" [disabled]="registrarForm.invalid">Registrar</button>
-            <button class="btn btn-secondary" type="button" (click)="signIn()">Sou Usuário</button>
+            <button class="btn btn-secondary" type="button" (click)="signIn()">Voltar</button>
           </div>
         </form>
       </div>
@@ -29,7 +29,7 @@
           <input type="password" placeholder="Password" formControlName="password"/>
           <div class="botoes-container">
             <button class="btn btn-primary " type="submit">Entrar</button>
-            <button class="btn btn-secondary" type="button" (click)="signUp()">Novo Usuário</button>
+            <button class="btn btn-secondary" type="button" (click)="signUp()">Cadastrar</button>
           </div>
           <a class="corLetra" [routerLink]="'/resetar-senha'">Esqueceu sua senha?</a>
         </form>
