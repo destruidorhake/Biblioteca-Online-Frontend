@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { Router, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../Authentication/auth.service';
 import $ from 'jquery';
 
@@ -31,15 +31,22 @@ import $ from 'jquery';
 export class SideBarComponent {
   isProfessor: boolean = false;
   isAluno: boolean = false;
-  userSession: any;
+  showSidebar: boolean = true; // nova variável para controlar a visibilidade da sidebar
 
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.updateNavbarVisibility();
     if (!this.authService.isLoggedIn()) {
-      this.router.navigate(['/login']); // Redireciona para login se não estiver autenticado
+      this.router.navigate(['/login']);
     }
+
+    // Verifica a rota atual para definir a visibilidade da sidebar
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.showSidebar = !event.url.includes('/login'); // Oculta a sidebar na rota de login
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -69,7 +76,6 @@ export class SideBarComponent {
 
     const blob = $('#blob');
     const blobPath = $('#blob-path');
-    const hamburger = $('.hamburger');
 
     $(window).on('mousemove', (e) => {
       x = e.pageX;
@@ -85,49 +91,5 @@ export class SideBarComponent {
       menuExpanded = false;
       $(this).parent().removeClass('expanded');
     });
-
-    const easeOutExpo = (currentIteration: number, startValue: number, changeInValue: number, totalIterations: number): number => {
-      return changeInValue * (-Math.pow(2, -10 * currentIteration / totalIterations) + 1) + startValue;
-    };
-
-    const svgCurve = () => {
-      if ((curveX > x - 1) && (curveX < x + 1)) {
-        xitteration = 0;
-      } else {
-        if (menuExpanded) {
-          targetX = 0;
-        } else {
-          xitteration = 0;
-          if (x > 150) {
-            targetX = 0;
-          } else {
-            targetX = -(((60 + 20) / 100) * (x - 150));
-          }
-        }
-        xitteration++;
-      }
-
-      if ((curveY > y - 1) && (curveY < y + 1)) {
-        yitteration = 0;
-      } else {
-        yitteration++;
-      }
-
-      curveX = easeOutExpo(xitteration, curveX, targetX - curveX, 100);
-      curveY = easeOutExpo(yitteration, curveY, y - curveY, 100);
-
-      const anchorDistance = 200;
-      const curviness = anchorDistance - 40;
-
-      const newCurve2 = `M60,${height}H0V0h60v${(curveY - anchorDistance)}c0,${curviness},${curveX},${curviness},${curveX},${anchorDistance}S60,${curveY},60,${(curveY + (anchorDistance * 2))}V${height}z`;
-
-      blobPath.attr('d', newCurve2);
-      blob.width(curveX + 60);
-      hamburger.css('transform', `translate(${curveX}px, ${curveY}px)`);
-      $('h2').css('transform', `translateY(${curveY}px)`);
-      window.requestAnimationFrame(svgCurve);
-    };
-
-    window.requestAnimationFrame(svgCurve);
   }
 }
