@@ -28,6 +28,7 @@ export class UserLoginComponent {
   ) {}
 
   ngOnInit(): void {
+    this.authService.logout();
     this.initializeForms();
   }
 
