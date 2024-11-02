@@ -177,7 +177,7 @@ select {
 }
 
 .overlay {
-	background-image: url("../../Imagens/upratileira.png");
+	background-image: url("../../../assets/Imagens/upratileira.png");
 	background-repeat: no-repeat;
   background-position-y: center;
   background-position-x: 214%;

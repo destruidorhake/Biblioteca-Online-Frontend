@@ -16,7 +16,7 @@ import { GeneroService } from './services/Genero.Service/genero.service';
 import { UsuariosService } from './services/user-service/usuarios.service';
 import { LivrosAtribuidosService } from './services/Livros-Atribuidos-Service/livros-atribuidos.service';
 import { PratileiraService } from './services/Pratileiras.Service/pratileira.service';
-import { JwtInterceptor } from './Authentication/JwtInterceptor';
+import { JwtInterceptor } from './configuration/jwt/JwtInterceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

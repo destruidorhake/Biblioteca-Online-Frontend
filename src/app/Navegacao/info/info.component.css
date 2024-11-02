@@ -128,7 +128,7 @@ body {
 }
 
 .container .card .content .aluno {
-  background-image: url("../../Imagens/aluno.png");
+  background-image: url("../../../assets/Imagens/aluno.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	position: relative;
@@ -138,7 +138,7 @@ body {
 }
 
 .container .card .content .manual {
-  background-image: url("../../Imagens/manual.png");
+  background-image: url("../../../assets/Imagens/manual.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	position: relative;
@@ -148,7 +148,7 @@ body {
 }
 
 .container .card .content .professor {
-  background-image: url("../../Imagens/professor.png");
+  background-image: url("../../../assets/Imagens/professor.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	position: relative;
@@ -158,7 +158,7 @@ body {
 }
 
 .container .card .content .livro {
-  background-image: url("../../Imagens/livro.png");
+  background-image: url("../../../assets/Imagens/livro.png");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	position: relative;

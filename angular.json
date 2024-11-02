@@ -42,8 +42,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/app/Authentication/environment.dev.ts",
-                  "with": "src/app/Authentication/environment.prod.ts"
+                  "replace": "src/app/configuration/environments/environment.dev.ts",
+                  "with": "src/app/configuration/environments/environment.prod.ts"
                 }
               ],
               "budgets": [

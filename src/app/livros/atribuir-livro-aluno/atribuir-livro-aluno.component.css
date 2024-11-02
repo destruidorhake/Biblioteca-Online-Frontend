@@ -182,7 +182,7 @@ select {
 }
 
 .overlay {
-	background-image: url("../../Imagens/alunos-livro.jpeg");
+	background-image: url("../../../assets/Imagens/alunos-livro.jpeg");
 	background-repeat: no-repeat;
 	background-size: 100%;
 	color: black;

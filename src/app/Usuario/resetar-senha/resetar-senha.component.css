@@ -17,7 +17,7 @@
 }
 
 .background {
-  background-image: url('../../Imagens/livo.jpg');
+  background-image: url('../../../assets/Imagens/livo.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100dvh;
@@ -288,7 +288,7 @@ footer a {
 
   .background {
     background-color: transparent;
-    background-image: url('../../Imagens/livo.jpg');
+    background-image: url('../../../assets/Imagens/livo.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100dvh;
@@ -331,7 +331,7 @@ footer a {
   }
 
   .container {
-    background-image: url('../../Imagens/fundoLogin.png');
+    background-image: url('../../../assets/Imagens/fundoLogin.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: 40%;
@@ -346,7 +346,7 @@ footer a {
   }
 
   form {
-    background-image: url('../../Imagens/fundoLogin.png');
+    background-image: url('../../../assets/Imagens/fundoLogin.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: 40%;

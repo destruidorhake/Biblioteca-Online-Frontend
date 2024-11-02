@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Aluno } from '../../models/aluno.model';
-import { environment } from '../../Authentication/environment.dev';
+import { environment } from '../../configuration/environments/environment.dev';
 
 @Injectable({
   providedIn: 'root'
