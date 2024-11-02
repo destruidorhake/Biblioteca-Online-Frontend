@@ -40,6 +40,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/app/Authentication/environment.dev.ts",
+                  "with": "src/app/Authentication/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
