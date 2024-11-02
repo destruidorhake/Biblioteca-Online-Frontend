@@ -31,7 +31,8 @@ import $ from 'jquery';
 export class SideBarComponent {
   isProfessor: boolean = false;
   isAluno: boolean = false;
-  showSidebar: boolean = true; // nova variável para controlar a visibilidade da sidebar
+  showSidebar: boolean = true;
+  menuExpanded: boolean = false;
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -41,22 +42,22 @@ export class SideBarComponent {
       this.router.navigate(['/login']);
     }
 
-    // Verifica a rota atual para definir a visibilidade da sidebar
+    // Monitora as mudanças de rota
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.showSidebar = !event.url.includes('/login'); // Oculta a sidebar na rota de login
+        this.showSidebar = !(event.url.includes('/login') || event.url.includes('/resetar-senha'));
       }
     });
-  }
-
-  ngAfterViewInit(): void {
-    this.initializeBlobAnimation();
   }
 
   updateNavbarVisibility(): void {
     const userType = this.authService.getUserType();
     this.isProfessor = userType === 'professor';
     this.isAluno = userType === 'aluno';
+  }
+
+  ngAfterViewInit(): void {
+    this.initializeBlobAnimation();
   }
 
   logout(): void {
@@ -70,26 +71,30 @@ export class SideBarComponent {
   private initializeBlobAnimation(): void {
     const height = window.innerHeight;
     let x = 0, y = height / 2;
-    let curveX = 10, curveY = 0, targetX = 0;
-    let xitteration = 0, yitteration = 0;
-    let menuExpanded = false;
-
-    const blob = $('#blob');
-    const blobPath = $('#blob-path');
 
     $(window).on('mousemove', (e) => {
       x = e.pageX;
       y = e.pageY;
     });
 
-    $('.hamburger, .menu-inner').on('mouseenter', function() {
-      $(this).parent().addClass('expanded');
-      menuExpanded = true;
+    $('.hamburger, .menu-inner').on('mouseenter', () => {
+      this.menuExpanded = true;
+      $('#menu').addClass('expanded');
     });
 
-    $('.menu-inner').on('mouseleave', function() {
-      menuExpanded = false;
-      $(this).parent().removeClass('expanded');
+    $('.menu-inner').on('mouseleave', () => {
+      this.menuExpanded = false;
+      $('#menu').removeClass('expanded');
     });
+  }
+
+  toggleMenu(): void {
+    this.menuExpanded = !this.menuExpanded;
+    $('#menu').toggleClass('expanded', this.menuExpanded);
+  }
+
+  collapseMenu(): void {
+    this.menuExpanded = false;
+    $('#menu').removeClass('expanded'); // Remove a classe expanded da sidebar
   }
 }

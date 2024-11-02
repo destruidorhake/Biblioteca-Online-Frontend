@@ -48,10 +48,10 @@
             <a>Consulte os manuais do sistema com orientações essenciais para uso e configuração. Selecione o formato
               que preferir para visualizar o documento.</a>
               <!-- Botão para visualizar o PDF em uma nova aba -->
-            <button class="btn btn-primary btn-lg btn-block espaco" onclick="window.open('../../../assets/manual-do-usuario.pdf', '_blank')"> Visualizar PDF </button>
+            <button disabled class="btn btn-primary" onclick="window.open('../../../assets/manual-do-usuario.pdf', '_blank')"> Visualizar PDF </button>
 
             <!-- Botão para visualizar o WORD em uma nova aba -->
-            <button class="btn btn-primary btn-lg btn-block" onclick="window.open('../../../assets/manual-do-usuario.docx', '_blank')"> Visualizar Word </button>
+            <button disabled class="btn btn-primary espaco" onclick="window.open('../../../assets/manual-do-usuario.docx', '_blank')"> Visualizar Word </button>
           </li>
         </ul>
       </div>
@@ -73,12 +73,12 @@
 			</div>
 		</div>
 	</section>
+</div>
 
-  <!-- SETA PARA ROLAR A PÁGINA PARA BAIXO -->
-  <div class="arrow-container">
-    <a  (click)="scrollDown()">
-      <p class="arrow-text">Clique</p> <!-- Texto acima da seta -->
-      <div class="arrow"></div>
-    </a>
-  </div>
+ <!-- SETA PARA ROLAR A PÁGINA PARA BAIXO -->
+ <div class="arrow-container">
+  <a  (click)="scrollDown()">
+    <p class="arrow-text">Clique</p> <!-- Texto acima da seta -->
+    <div class="arrow"></div>
+  </a>
 </div>

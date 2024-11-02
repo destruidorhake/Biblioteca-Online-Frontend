@@ -36,7 +36,6 @@ export class ResetarSenhaComponent {
   isRightPanelActive: boolean = false;
   isSubmitting = false;
 
-
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.resetarForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],

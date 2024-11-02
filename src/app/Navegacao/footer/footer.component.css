@@ -159,10 +159,6 @@
 
 /* Ajuste para dispositivos móveis (até 480px) */
 @media (max-width: 480px) {
-  .celular_espaco {
-    margin-top: 90dvh;
-  }
-
   .site-footer {
     z-index: -10;
     background-color:#ff4360;
@@ -172,6 +168,9 @@
     color:white;
     padding-left: 5dvw;
     padding-right : 5dvw;
+
+    position: relative;
+    top: 1000px;
   }
 }
 

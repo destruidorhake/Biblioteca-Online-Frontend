@@ -20,8 +20,7 @@ body {
 }
 
 .tela {
-  position: relative;
-  width: 100%;
+  width: 75%;
   margin: 0 auto;
   overflow-y: none;
   height: 100%;
@@ -42,10 +41,12 @@ body {
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   position: relative;
   text-align: center;
-  padding-top: 3%; /* Mantém o espaçamento em relação ao topo da tela */
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 7dvh;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 300%; /* Tamanho da fonte padrão (desktop) */
+  font-size: 300%;
   padding-bottom: 3dvh;
   color: rgb(0, 0, 0);
   text-decoration: underline;
@@ -70,12 +71,22 @@ body {
   .titulo {
     padding-top: 5dvh;
     font-size: 200%;
-    word-wrap: break-word; /* Força a quebra de linha */
-    overflow-wrap: break-word; /* Compatível com mais navegadores */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .celular_espaco {
     padding-top: 200px;
+  }
+
+  .arrow-container {
+    top: 1650px;
+    position: static;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    text-align: center; /* Alinha o texto ao centro */
   }
 }
 
