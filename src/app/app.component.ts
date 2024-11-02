@@ -5,6 +5,7 @@ import { AuthService } from './Authentication/auth.service';
 import { SideBarComponent } from './Navegacao/side-bar/side-bar.component';
 import { FooterComponent } from "./Navegacao/footer/footer.component";;
 import { filter } from 'rxjs';
+import { AnalyticsService } from './services/Speed-Insights/analytics.service';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,16 @@ import { filter } from 'rxjs';
 export class AppComponent {
   showFooter = false;
 
-  constructor(public authService: AuthService, private router: Router) {
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private analytics: AnalyticsService  // Injetar o serviço
+  ) {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         this.checkFooterVisibility();
+        this.analytics.pageView(this.router.url); // Rastrear visualizações de página
       });
   }
 
