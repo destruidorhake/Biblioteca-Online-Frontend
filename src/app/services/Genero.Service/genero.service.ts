@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../Authentication/environment';
+import { environment } from '../../Authentication/environment.dev';
 import { GeneroTextual, GeneroLinguistico } from '../../models/generos.model';
 
 @Injectable({

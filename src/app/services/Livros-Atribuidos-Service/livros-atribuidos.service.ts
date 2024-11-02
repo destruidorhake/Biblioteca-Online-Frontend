@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { environment } from '../../Authentication/environment';
+import { environment } from '../../Authentication/environment.dev';
 import { Aluno } from '../../models/aluno.model';
 import { Livro } from '../../models/livros.model';
 import { AlunoLivro } from '../../models/alunoLivro.model';
