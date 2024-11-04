@@ -88,13 +88,5 @@ export class SideBarComponent {
     });
   }
 
-  toggleMenu(): void {
-    this.menuExpanded = !this.menuExpanded;
-    $('#menu').toggleClass('expanded', this.menuExpanded);
-  }
 
-  collapseMenu(): void {
-    this.menuExpanded = false;
-    $('#menu').removeClass('expanded'); // Remove a classe expanded da sidebar
-  }
 }

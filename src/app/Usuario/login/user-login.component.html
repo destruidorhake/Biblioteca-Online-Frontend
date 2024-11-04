@@ -29,7 +29,6 @@
           <input type="password" placeholder="Password" formControlName="password"/>
           <div class="botoes-container">
             <button class="btn btn-primary " type="submit">Entrar</button>
-            <button class="btn btn-secondary" type="button" (click)="signUp()">Cadastrar</button>
           </div>
           <a class="corLetra" [routerLink]="'/resetar-senha'">Esqueceu sua senha?</a>
         </form>
@@ -48,7 +47,7 @@
           <div class="overlay-panel overlay-right">
             <h1>Bem-vindo!</h1>
             <p>Parece que você ainda não se registrou em nosso sistema. Para aproveitar todos os benefícios e recursos que oferecemos, por favor, preencha seus dados pessoais e inicie sua jornada conosco!</p>
-            <button class="btn btn-secondary" (click)="signUp()">Registrar Agora</button>
+            <button class="btn btn-secondary" (click)="signUp()">Cadastrar</button>
         </div>
 
         </div>

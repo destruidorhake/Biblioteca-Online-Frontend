@@ -2,29 +2,28 @@
   <div class="menu-inner">
     <p class="titulo">Livraria Online</p>
     <ul>
-      <li (click)="collapseMenu()" [routerLink]="['/search/registrar-aluno']" routerLinkActive="active-link">
+      <li  [routerLink]="['/search/registrar-aluno']" routerLinkActive="active-link">
         <i class="bi bi-person-plus"></i>Registrar Aluno
       </li>
-      <li (click)="collapseMenu()" [routerLink]="['/search/registrar-livro']" routerLinkActive="active-link">
+      <li  [routerLink]="['/search/registrar-livro']" routerLinkActive="active-link">
         <i class="bi bi-journal-plus"></i>Adicionar Livro
       </li>
-      <li (click)="collapseMenu()" [routerLink]="['/search/alunos-cadastrados']" routerLinkActive="active-link">
+      <li  [routerLink]="['/search/alunos-cadastrados']" routerLinkActive="active-link">
         <i class="bi bi-people"></i>Lista de Alunos
       </li>
-      <li (click)="collapseMenu()" [routerLink]="['/search/livros-cadastrados']" routerLinkActive="active-link">
+      <li  [routerLink]="['/search/livros-cadastrados']" routerLinkActive="active-link">
         <i class="bi bi-journals"></i>Livros Cadastrados
       </li>
-      <!-- Adicione `(click)="collapseMenu()"` em cada item -->
-      <li (click)="collapseMenu()" [routerLink]="['/search/atribuir']" routerLinkActive="active-link">
+      <li  [routerLink]="['/search/atribuir']" routerLinkActive="active-link">
         <i class="bi bi-pencil-square"></i>Atribuir Livro ao Aluno
       </li>
-      <li (click)="collapseMenu()" [routerLink]="['/search/atribuido']" routerLinkActive="active-link">
+      <li  [routerLink]="['/search/atribuido']" routerLinkActive="active-link">
         <i class="bi bi-journal-check"></i>Livros Atribuídos ao Aluno
       </li>
-      <li (click)="collapseMenu()" [routerLink]="['/search/informacao']" routerLinkActive="active-link">
+      <li  [routerLink]="['/search/informacao']" routerLinkActive="active-link">
         <i class="bi bi-info-circle"></i>Informações Gerais
       </li>
-      <li (click)="logout(); collapseMenu()" [routerLink]="['/login']" routerLinkActive="active-link">
+      <li  [routerLink]="['/login']" routerLinkActive="active-link">
         <i class="bi bi-box-arrow-left"></i>Sair
       </li>
     </ul>
