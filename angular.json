@@ -40,6 +40,7 @@
           },
           "configurations": {
             "production": {
+              "sourceMap": false,
               "fileReplacements": [
                 {
                   "replace": "src/app/configuration/environments/environment.dev.ts",
