@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { MatIconButton, MatIconAnchor, MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../Authentication/auth.service';
 import $ from 'jquery';
 
@@ -36,7 +36,11 @@ export class SideBarComponent {
   menuExpanded: boolean = false;
 
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private elementRef: ElementRef
+  ) {}
 
   ngOnInit(): void {
     this.checkScreenSize();
