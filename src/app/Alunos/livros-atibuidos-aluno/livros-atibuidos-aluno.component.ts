@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LivrosAtribuidosService } from '../../services/Livros-Atribuidos-Service/livros-atribuidos.service';
@@ -20,6 +20,7 @@ export class LivrosAtibuidosAlunoComponent {
   filteredAlunoLivros: AlunoLivro[] = [];
   currentPage: number = 1;
   itemsPerPage: number = 10;
+  isMobile: boolean = false;
 
   @ViewChild('searchInput') searchInput!: ElementRef;
   searchTerm: string = '';
@@ -31,8 +32,17 @@ export class LivrosAtibuidosAlunoComponent {
 
   ngOnInit(): void {
     this.loadAlunoLivros();
+    this.checkScreenSize();
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize(): void {
+    this.isMobile = window.innerWidth <= 768;
+  }
 
   applyFilter(event?: any): void {
     if (event) {

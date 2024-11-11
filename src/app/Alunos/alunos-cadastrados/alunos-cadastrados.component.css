@@ -131,7 +131,6 @@ h2 {
     margin: 0px 30px 70px;
     overflow-x: hidden; /* Ativa o scroll horizontal */
     -webkit-overflow-scrolling: touch; /* Suaviza a rolagem em dispositivos móveis */
-    width: auto;
   }
 
   /* Remover algumas margens para compactar */
@@ -192,5 +191,6 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
   }
 }
