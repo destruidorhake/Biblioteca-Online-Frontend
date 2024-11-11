@@ -105,4 +105,12 @@ i{
   .navbar-toggler{
     color: white !important;
   }
+  .menuText {
+    text-transform: capitalize;
+    font-style: normal;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+  }
 }
