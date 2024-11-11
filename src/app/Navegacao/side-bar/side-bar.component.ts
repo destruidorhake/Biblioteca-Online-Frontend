@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NavigationEnd, NavigationStart, Router, RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../Authentication/auth.service';
 import $ from 'jquery';
 
@@ -19,8 +19,6 @@ import $ from 'jquery';
     MatOptionModule,
     MatTableModule,
     MatIconModule,
-    MatIconButton,
-    MatIconAnchor,
     MatButtonModule,
     MatSidenavModule,
     MatToolbarModule
