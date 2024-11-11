@@ -129,8 +129,9 @@ h2 {
     overflow-x: auto;
     width: auto;
     margin: 0px 30px 70px;
-    overflow-x: auto; /* Ativa o scroll horizontal */
+    overflow-x: hidden; /* Ativa o scroll horizontal */
     -webkit-overflow-scrolling: touch; /* Suaviza a rolagem em dispositivos móveis */
+    width: auto;
   }
 
   /* Remover algumas margens para compactar */
@@ -186,5 +187,10 @@ h2 {
 
   .esconder {
     display: none;
+  }
+  .card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }

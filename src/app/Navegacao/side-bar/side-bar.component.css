@@ -92,4 +92,18 @@ i{
     left: 20px;
     z-index: 1100;
   }
+
+  .bi{
+    margin-right: 10px;
+  }
+  .navbar {
+    background-color: #ff4360 !important;
+  }
+  .navbar a {
+    color:white;
+  }
+  .navbar-toggler{
+    color: white !important;
+  }
+
 }

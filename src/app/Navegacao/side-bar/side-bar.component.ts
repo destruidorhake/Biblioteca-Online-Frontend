@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatIconButton, MatIconAnchor, MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,12 +32,16 @@ export class SideBarComponent {
   isProfessor: boolean = false;
   isAluno: boolean = false;
   showSidebar: boolean = true;
+  isMobile: boolean = false;
   menuExpanded: boolean = false;
+
 
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.checkScreenSize();
     this.updateNavbarVisibility();
+
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/login']);
     }
@@ -48,6 +52,15 @@ export class SideBarComponent {
         this.showSidebar = !(event.url.includes('/login') || event.url.includes('/resetar-senha'));
       }
     });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize(): void {
+    this.isMobile = window.innerWidth <= 768;
   }
 
   updateNavbarVisibility(): void {

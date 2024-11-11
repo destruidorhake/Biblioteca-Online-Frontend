@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { AlunosService } from '../../services/alunos-service/alunos.service';
 import { Aluno } from '../../models/aluno.model';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,7 @@ export class AlunosCadastradosComponent {
   alunos: Aluno[] = [];
   paginatedAlunos: Aluno[] = [];
   filteredAluno: Aluno[] = [];
+  isMobile: boolean = false;
 
   @ViewChild('searchInput') searchInput!: ElementRef;
   searchTerm: string = '';
@@ -27,6 +28,16 @@ export class AlunosCadastradosComponent {
 
   ngOnInit(): void {
     this.loadAlunos();
+    this.checkScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize(): void {
+    this.isMobile = window.innerWidth <= 768;
   }
 
   loadAlunos(): void {
