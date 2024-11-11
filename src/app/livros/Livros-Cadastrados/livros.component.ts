@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -20,6 +20,8 @@ export class LivrosComponent {
   itemsPerPage: number = 10;
   livroSelecionado: any;
   userSession: any;
+  isMobile: boolean = false;
+
 
   @ViewChild('searchInput') searchInput!: ElementRef;
   searchTerm: string = '';
@@ -28,8 +30,17 @@ export class LivrosComponent {
 
   ngOnInit(): void {
     this.loadLivros();
+    this.checkScreenSize();
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    this.checkScreenSize();
+  }
+
+  checkScreenSize(): void {
+    this.isMobile = window.innerWidth <= 768;
+  }
   getOrdem(index: number): number {
     return index + 1 + (this.currentPage - 1) * this.itemsPerPage;
   }

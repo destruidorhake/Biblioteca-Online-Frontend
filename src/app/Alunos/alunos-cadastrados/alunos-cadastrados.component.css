@@ -187,6 +187,7 @@ h2 {
   .esconder {
     display: none;
   }
+
   .card{
     display: flex;
     flex-direction: column;

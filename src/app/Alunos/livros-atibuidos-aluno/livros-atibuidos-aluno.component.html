@@ -34,14 +34,10 @@
 
 <!-- MOBILE -->
 <div class="tela" *ngIf="isMobile">
-  <p class="titulo">Lista de Alunos</p>
+  <p class="titulo">Livros Atribuídos</p>
   <div class="table-wrapper">
     <div class="input-group">
-      <input
-        class="pesquisar"
-        #searchInput
-        id="search"
-        type="text" (keyup)="applyFilter($event)" placeholder="Pesquisar Aluno, Prateleira ou Status"/>
+      <input class="pesquisar" #searchInput id="search" type="text" (keyup)="applyFilter($event)" placeholder="Pesquisar Aluno, Livro ou Data"/>
       <button type="button" class="icone esconder" (click)="applyFilter()">
         <i class="bi bi-search"></i>
       </button>

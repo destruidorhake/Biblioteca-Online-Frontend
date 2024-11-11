@@ -48,9 +48,10 @@
     <!-- Cards de Alunos para Mobile -->
     <div class="card" style="width: 18rem;">
       <div *ngFor="let aluno of paginatedAlunos; let i = index" class="card-body">
-        <p><strong>Nome:</strong> {{ aluno.nomeAluno }}</p>
-        <p><strong>Estado Prateleira:</strong> {{ aluno.tipoEstadoPratileira.descricao }}</p>
-        <p><strong>Ativo:</strong> {{ aluno.tipoAtivo.descricao }}</p>
+        <p><strong>Órdem:</strong> {{ (currentPage - 1) * itemsPerPage + i + 1 }} </p>
+        <p><strong>Aluno:</strong> {{ aluno.nomeAluno }} </p>
+        <p><strong>Estado Prateleira:</strong> {{ aluno.tipoEstadoPratileira.descricao }} </p>
+        <p><strong>Ativo:</strong> {{ aluno.tipoAtivo.descricao }} </p>
         <div class="acoes">
           <button class="btn btn-danger" (click)="deleteAluno(aluno.idAluno)">Apagar</button>
         </div>
