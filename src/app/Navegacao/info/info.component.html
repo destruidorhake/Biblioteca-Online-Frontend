@@ -76,7 +76,7 @@
 </div>
 
  <!-- SETA PARA ROLAR A PÁGINA PARA BAIXO -->
- <div class="arrow-container">
+ <div class="arrow-container" *ngIf="!isMobile">
   <a  (click)="scrollDown()">
     <p class="arrow-text">Clique</p> <!-- Texto acima da seta -->
     <div class="arrow"></div>
